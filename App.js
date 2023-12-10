@@ -1,71 +1,46 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, SafeAreaView, ScrollView } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-
-const CircleWithName = ({ iconName, iconText }) => {
-  return (
-    <View style={styles.circleContainer}>
-      <View style={styles.circleIcon}>
-        <MaterialCommunityIcons name={iconName} size={20} color="#fff" />
-      </View>
-      <Text>{iconText}</Text>
-    </View>
-  );
-};
+import React, { useRef, useEffect } from "react";
+import { Button, StyleSheet, View } from "react-native";
+import LottieView from "lottie-react-native";
 
 export default function App() {
+  const animation = useRef(null);
+  useEffect(() => {
+    // animation.current?.play();
+  }, []);
+
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView
-        style={styles.circleScroller}
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-      >
-        <View style={styles.rowContainer}>
-          <CircleWithName iconName={"gate"} iconText="Main Gate" />
-          <CircleWithName iconName={"boom-gate"} iconText="Second Gate" />
-          <CircleWithName iconName={"gate-open"} iconText="Main Gate" />
-          <CircleWithName
-            iconName={"boom-gate-arrow-up"}
-            iconText="Main Gate"
-          />
-        </View>
-      </ScrollView>
-      <StatusBar style="auto" />
-    </SafeAreaView>
+    <View style={styles.animationContainer}>
+      <LottieView
+        autoPlay
+        ref={animation}
+        style={{
+          width: 200,
+          height: 200,
+          // backgroundColor: "#eee",
+        }}
+        source={require("./assets/data.json")}
+      />
+      <View style={styles.buttonContainer}>
+        <Button
+          title="Restart Animation"
+          onPress={() => {
+            animation.current?.reset();
+            animation.current?.play();
+          }}
+        />
+      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    margin: 20,
+  animationContainer: {
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+    flex: 1,
   },
-
-  circleScroller: {
-    padding: 20,
-    borderRadius: 10,
-    backgroundColor: "#f2f2f2",
-  },
-
-  rowContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-  },
-
-  circleContainer: {
-    flexDirection: "column",
-    alignItems: "center",
-  },
-
-  circleIcon: {
-    color: "#fff",
-    padding: 15,
-    backgroundColor: "blue",
-    borderRadius: 50,
-    marginHorizontal: 20,
-    marginBottom: 10,
+  buttonContainer: {
+    paddingTop: 20,
   },
 });
