@@ -5,7 +5,8 @@ import LottieView from "lottie-react-native";
 export default function App() {
   const animation = useRef(null);
   useEffect(() => {
-    // animation.current?.play();
+    // You can control the ref programmatically, rather than using autoPlay
+    animation.current?.play();
   }, []);
 
   return (
@@ -18,9 +19,10 @@ export default function App() {
           height: 200,
           // backgroundColor: "#eee",
         }}
+        // Find more Lottie files at https://lottiefiles.com/featured
         source={require("./assets/data.json")}
       />
-      <View style={styles.buttonContainer}>
+      {/* <View style={styles.buttonContainer}>
         <Button
           title="Restart Animation"
           onPress={() => {
@@ -28,14 +30,14 @@ export default function App() {
             animation.current?.play();
           }}
         />
-      </View>
+      </View> */}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   animationContainer: {
-    backgroundColor: "#fff",
+    backgroundColor: "red",
     alignItems: "center",
     justifyContent: "center",
     flex: 1,
