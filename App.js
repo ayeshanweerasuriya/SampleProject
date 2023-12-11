@@ -15,22 +15,22 @@ export default function App() {
         autoPlay
         ref={animation}
         style={{
-          width: 200,
-          height: 200,
+          width: 150,
+          height: 150,
           // backgroundColor: "#eee",
         }}
         // Find more Lottie files at https://lottiefiles.com/featured
         source={require("./assets/data.json")}
       />
-      {/* <View style={styles.buttonContainer}>
+      <View style={styles.buttonContainer}>
         <Button
-          title="Restart Animation"
+          title=""
           onPress={() => {
             animation.current?.reset();
             animation.current?.play();
           }}
         />
-      </View> */}
+      </View>
     </View>
   );
 }
