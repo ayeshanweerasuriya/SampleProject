@@ -5,23 +5,24 @@ import LottieView from "lottie-react-native";
 export default function App() {
   const animation = useRef(null);
   useEffect(() => {
-    // You can control the ref programmatically, rather than using autoPlay
     animation.current?.play();
   }, []);
 
   return (
     <View style={styles.animationContainer}>
-      <LottieView
-        autoPlay
-        ref={animation}
-        style={{
-          width: 150,
-          height: 150,
-          // backgroundColor: "#eee",
-        }}
-        // Find more Lottie files at https://lottiefiles.com/featured
-        source={require("./assets/data.json")}
-      />
+      <View styl={styles.logo}>
+        <LottieView
+          autoPlay
+          ref={animation}
+          style={{
+            width: 100,
+            height: 100,
+            backgroundColor: "red",
+            borderRadius: 20,
+          }}
+          source={require("./assets/data.json")}
+        />
+      </View>
       <View style={styles.buttonContainer}>
         <Button
           title=""
@@ -37,11 +38,11 @@ export default function App() {
 
 const styles = StyleSheet.create({
   animationContainer: {
-    backgroundColor: "red",
     alignItems: "center",
     justifyContent: "center",
     flex: 1,
   },
+
   buttonContainer: {
     paddingTop: 20,
   },
