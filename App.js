@@ -56,18 +56,6 @@ export default function App() {
             fill="red"
           />
         </Svg>
-        <View style={styles.buttonContainer}>
-          <Button
-            title=""
-            onPress={() => {
-              animation.current?.reset();
-              animation.current?.play();
-              setAnimationComplete(false);
-              maskRadius.setValue(0);
-              animateMask();
-            }}
-          />
-        </View>
       </View>
     </View>
   );
